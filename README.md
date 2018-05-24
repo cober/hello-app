@@ -14,8 +14,8 @@ A helm chart that runs on GKE cluster
 
 ### Content
 
-hello-helm (NodeJS application deployable with Helm and has support for creating an ingress for Voyager)
-prometheus (Prometheus deployable with Helm)
+*hello-helm (NodeJS application deployable with Helm and has support for creating an ingress for Voyager)
+*prometheus (Prometheus deployable with Helm)
 
 ### Installing
 
