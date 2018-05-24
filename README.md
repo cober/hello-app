@@ -1,4 +1,4 @@
-# Zoover Tech Assignment
+# Hello App
 
 A helm chart that runs on GKE cluster
 
@@ -6,11 +6,11 @@ A helm chart that runs on GKE cluster
 
 ### Prerequisities
 
-- Google Container Cluster
-- Helm
-     -- Voyager
-     -- Hello app
-     -- Prometheus
+* Google Container Cluster
+* Helm
+* Voyager (deployable via Helm)
+* Hello app (deployable via Helm)
+* Prometheus (deployable via Helm)
 
 ### Content
 
@@ -34,7 +34,7 @@ gcloud container clusters get-credentials hello-cluster --zone europe-west1-d --
 We need to install Helm both locally and on cluster side.
 
 1. Download your desired version (https://github.com/kubernetes/helm/releases)
-2. Unpack it (tar -zxvf helm-v2.9.0-linux-amd64.tgz)
+2. Unpack it (tar -zxvf helm-v2.9.1-linux-amd64.tgz)
 3. Find the helm binary in the unpacked directory, and move it to its desired destination (mv linux-amd64/helm /usr/local/bin/helm)
 
 and after on we have to install on cluster side with following command:
@@ -51,8 +51,9 @@ kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admi
 kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'      
 helm init --service-account tiller --upgrade
 ```
+### Voyager
 
-Next one is Voyager. Voyager is L4/L7 Load Balancer based on HAProxy, which mainly focuses on speed, security and reliability. With also some awesome features, like certificate renewals, etc. (https://appscode.com/products/voyager/6.0.0/welcome/)
+Voyager is L4/L7 Load Balancer based on HAProxy, which mainly focuses on speed, security and reliability. With also some awesome features, like certificate renewals, etc. (https://appscode.com/products/voyager/6.0.0/welcome/)
 
 We need to add new Helm repo in this case
 
@@ -136,7 +137,7 @@ curl -vv http://146.148.127.29/example-proxy
 Found. Redirecting to /
 ```
 
-My only concern here was the term 'SECURE', which can mean serving a traffic over https in this case, but we need a domain (we can mimic it through /etc/hosts), but we will hit an issue on performing a proper certificate for example for existing domain in this case, so it will not work.
+My only concern here was the term 'SECURE', which can mean serving a traffic over https in this case, but we need a domain (we can mimic it through /etc/hosts), but we will hit an issue on issuing a proper certificate for example for existing domain in this case, so it will not work.
 
 ### Exposing metrics on /metrics
 
