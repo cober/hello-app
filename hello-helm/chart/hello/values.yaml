@@ -1,0 +1,20 @@
+# Default values for chart.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: coberr/hello
+  tag: latest
+  pullPolicy: Always
+service:
+  name: hello-service
+  type: NodePort
+  externalPort: 80
+  internalPort: 80
+ingress:
+  enabled: enable
+  hosts:
+    - hello.example.com
+  annotations:
+  tls:
+resources: {}
