@@ -22,7 +22,7 @@ A helm chart that runs on GKE cluster
 To install Google Container Cluster:
 
 ```
-gcloud container clusters create hello-cluster --cluster-version=1.10.2-gke.1 --enable-autorepair --machine-type=n1-standard-1 --zone=europe-west1-d --num-nodes=3
+gcloud container clusters create hello-cluster --enable-autorepair --machine-type=n1-standard-1 --zone=europe-west1-d --num-nodes=3
 ```
 
 and we can connect to the cluster afterwards
